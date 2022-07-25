@@ -1,5 +1,4 @@
 { config, pkgs, ... }:
-
 {
   imports =
     [
@@ -85,18 +84,23 @@
     users.epic = { pkgs, ...}: {
       home = {
         file = {
-          ".config/oh-my-zsh/epic.zsh-theme".source = builtins.fetchurl("https://gist.githubusercontent.com/TAG-Epic/6d04e6152da004e0656f57db599f2b04/raw/9c3dd6889b16cb6ebf94dcd8972c391106777863/epic.zsh-theme");
-          ".xbindkeysrc".source = "${pkgs.fetchFromGitHub {
-            owner = "tagepicdotfiles";
-            repo = "dotfiles";
-            rev = "bc1c7205a09387d60b902e6757fdd8394f0a8c6a";
-            sha256 = "sha256-Y2OZJGfMz+REFxxIkGcMdHV86ATCQn1xhx0oCU/c24A=";
-          }}/xbindkeysrc";
-
+          ".config/oh-my-zsh/epic.zsh-theme".source = builtins.fetchurl(
+            "https://raw.githubusercontent.com/tagepicdotfiles/dotfiles/master/epic.zsh-theme"
+          );
+          ".xbindkeysrc".source = builtins.fetchurl(
+            "https://raw.githubusercontent.com/tagepicdotfiles/dotfiles/master/xbindkeysrc"
+          );
+          ".config/alacritty/alacritty.yml".source = builtins.fetchurl(
+            "https://raw.githubusercontent.com/tagepicdotfiles/dotfiles/master/alacritty.yml"
+          );
 
           # NeoVIM
-          ".config/nvim/init.vim".source = builtins.fetchurl("https://gist.githubusercontent.com/TAG-Epic/6a6972d37186805f7749284b1709021b/raw/fa993a4566d2d9f0d3f282a83ae9aadfad06c67d/.nvimrc");
-          ".local/share/nvim/site/autoload/plug.vim".source = builtins.fetchurl("https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim");
+          ".config/nvim/init.vim".source = builtins.fetchurl(
+            "https://raw.githubusercontent.com/tagepicdotfiles/dotfiles/master/neovim.vim"
+          );
+          ".local/share/nvim/site/autoload/plug.vim".source = builtins.fetchurl(
+            "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+          );
         };
         sessionVariables = {
           EDITOR = "nvim";
@@ -175,12 +179,7 @@
         };
         buildInputs = oldAttrs.buildInputs ++ [ pkgs.yajl ];
         configFile = pkgs.writeText "config.def.h" (
-          builtins.readFile "${pkgs.fetchFromGitHub {
-            owner = "tagepicdotfiles";
-            repo = "dotfiles";
-            rev = "6b869ad7ccbbfb32ce376d7b791459682ab10429";
-            sha256 = "sha256-l7kyFxv+Yp2TvbreYhhn2SvqtnZ5MRf6qvV8hb3Voi0=";
-          }}/dwmconfig.h"
+          builtins.readFile(builtins.fetchurl("https://raw.githubusercontent.com/tagepicdotfiles/dotfiles/master/dwmconfig.h"))
         );
         postPatch = "${oldAttrs.postPatch}\n cp ${configFile} config.def.h";
       });
