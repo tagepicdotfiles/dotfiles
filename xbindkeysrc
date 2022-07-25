@@ -22,3 +22,8 @@
 "playerctl -p spotify previous"
     m:0x0 + c:173
     XF86AudioPrev
+
+# Screen lock
+"dm-tool lock"
+    m:0x40 + c:46
+    Mod4 + l
