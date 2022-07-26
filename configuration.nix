@@ -76,6 +76,7 @@
       xclip
       xbindkeys
       playerctl
+      poetry
     ];
   };
 
