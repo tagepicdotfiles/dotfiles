@@ -77,6 +77,7 @@
       xbindkeys
       playerctl
       poetry
+      nodePackages.pyright
     ];
   };
 
