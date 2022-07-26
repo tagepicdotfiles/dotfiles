@@ -107,7 +107,7 @@
         sessionVariables = {
           EDITOR = "nvim";
           TERM = "xterm-256color";
-          PIP_DISABLE_PIP_VERSION_CHECK= = "1";
+          PIP_DISABLE_PIP_VERSION_CHECK = "1";
         };
       };
       programs = {
