@@ -108,6 +108,7 @@
           EDITOR = "nvim";
           TERM = "xterm-256color";
           PIP_DISABLE_PIP_VERSION_CHECK = "1";
+          SSH_ASKPASS = ""; # Remove stupid credential popup
         };
       };
       programs = {
