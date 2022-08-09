@@ -78,6 +78,10 @@
       playerctl
       poetry
       nodePackages.pyright
+      brightnessctl
+      prusa-slicer
+      cloc
+      gh
     ];
   };
 
@@ -142,6 +146,8 @@
             cd = "z";
             nix = "nix --experimental-features nix-command";
             nix-view = "nix --experimental-features nix-command edit -f '<nixpkgs>'";
+            dock = "xrandr --output eDP --off";
+            undock = "xrandr --output eDP --auto";
           };
           initExtra = ''
           eval "$(zoxide init zsh)"
