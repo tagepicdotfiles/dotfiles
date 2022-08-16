@@ -82,6 +82,10 @@
       prusa-slicer
       cloc
       gh
+      onefetch
+      vscode
+      ripgrep
+      thunderbird
     ];
   };
 
@@ -141,7 +145,7 @@
             custom = "$HOME/.config/oh-my-zsh/";
           };
           shellAliases = {
-            pushpwd = "scp ~/.config/keepassxc/passwords.kdbx root@vulpix.farfrom.world:~/Passwords.kdbx";
+            pushpwd = "scp ~/.config/keepassxc/Passwords.kdbx root@vulpix.farfrom.world:~/Passwords.kdbx";
             pullpwd = "scp root@vulpix.farfrom.world:~/Passwords.kdbx ~/.config/keepassxc/Passwords.kdbx";
             cd = "z";
             nix = "nix --experimental-features nix-command";
