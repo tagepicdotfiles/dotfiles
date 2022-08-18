@@ -1,4 +1,12 @@
 { config, pkgs, ... }:
+let
+  dotfiles = pkgs.fetchFromGitHub {
+    owner = "tagepicdotfiles";
+    repo = "dotfiles";
+    rev = "5cba525a3b51804d50825f8a194d2caebaca1fe1";
+    sha256 = "sha256-vVsWW2C8nW5qH7qIq4S3AFtzdzXvBG2/Gz0hFV7h7YQ=";
+  };
+in
 {
   imports =
     [
@@ -94,20 +102,17 @@
     users.epic = { pkgs, ...}: {
       home = {
         file = {
-          ".config/oh-my-zsh/epic.zsh-theme".source = builtins.fetchurl(
-            "https://raw.githubusercontent.com/tagepicdotfiles/dotfiles/master/epic.zsh-theme"
-          );
-          ".xbindkeysrc".source = builtins.fetchurl(
-            "https://raw.githubusercontent.com/tagepicdotfiles/dotfiles/master/xbindkeysrc"
-          );
-          ".config/alacritty/alacritty.yml".source = builtins.fetchurl(
-            "https://raw.githubusercontent.com/tagepicdotfiles/dotfiles/master/alacritty.yml"
-          );
+          ".config/oh-my-zsh/epic.zsh-theme".source = dotfiles + "/epic.zsh-theme";
+          ".xbindkeysrc".source = dotfiles + "/xbindkeysrc";
+          ".config/alacritty/alacritty.yml".source = dotfiles + "/alacritty.yml";
+
+          # Polybar
+          ".config/polybar/bar.sh".source = dotfiles + "/polybar/startbar.sh";
+          ".config/polybar/polybar.ini".source = dotfiles + "/polybar/polybar.ini";
+          ".config/polybar/scripts/get_volume.sh".source = dotfiles + "/polybar/scripts/get_volume.sh";
 
           # NeoVIM
-          ".config/nvim/init.vim".source = builtins.fetchurl(
-            "https://raw.githubusercontent.com/tagepicdotfiles/dotfiles/master/neovim.vim"
-          );
+          ".config/nvim/init.vim".source = dotfiles + "/neovim.vim";
           ".local/share/nvim/site/autoload/plug.vim".source = builtins.fetchurl(
             "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
           );
