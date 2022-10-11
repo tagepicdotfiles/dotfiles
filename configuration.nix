@@ -40,6 +40,7 @@ in
   services.xserver.layout = "no";
 
   # WM/DE
+  services.picom.enable = true;
   services.xserver = {
     enable = true;
     libinput = {
@@ -48,7 +49,15 @@ in
     windowManager.dwm.enable = true;
     desktopManager.gnome.enable = true; # TODO: Fix gnome-keyring mess
     displayManager = {
-      lightdm.enable = true;
+      lightdm = {
+        enable = true;
+        background = pkgs.fetchFromGitHub {
+          owner = "DenverCoder1";
+          repo = "minimalistic-wallpaper-collection";
+          rev = "eeb7aed40c8bcae614c48a4a17913e9ffd2d809b";
+          sha256 = "8LH5Nc1krDmRXLk0/2b+RMlgNInNtioSoQNeId74KGM=";
+        } + "/images/alena-aenami-escape.jpg";
+      };
       startx.enable = true;
     };
   };
@@ -227,6 +236,7 @@ in
     (self: super: {
       dwm = super.dwm.overrideAttrs (oldAttrs: rec {
         src = pkgs.fetchFromGitHub {
+
           owner = "tagepicdotfiles";
           repo = "dwm";
           rev = "c2cc0efebb4d3e9b2f8615a36551ec6a6b64e93f";
