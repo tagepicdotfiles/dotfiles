@@ -46,12 +46,40 @@ in
       enable = true;
     };
     windowManager.dwm.enable = true;
+    desktopManager.gnome.enable = true; # TODO: Fix gnome-keyring mess
     displayManager = {
       lightdm.enable = true;
       startx.enable = true;
     };
-    #desktopManager.gnome.enable = true;
   };
+
+  # Disable non-useful gnome packages
+  environment.gnome.excludePackages = (with pkgs; [
+    gnome-photos
+    gnome-tour
+    gnome-connections
+    gnome-text-editor
+  ]) ++ (with pkgs.gnome; [
+    gnome-calculator
+    cheese
+    yelp
+    nautilus
+    rygel
+    gnome-music
+    gedit
+    epiphany
+    geary
+    evince
+    gnome-calendar
+    gnome-contacts
+    gnome-disk-utility
+    gnome-font-viewer
+    gnome-keyring
+    gnome-logs
+    gnome-maps
+    gnome-clocks
+    seahorse
+  ]);
 
   # Pritning via CUPS
   services.printing.enable = true;
@@ -72,7 +100,7 @@ in
       spotify
       keepassxc
       polymc
-      bpytop
+      btop
       neofetch
       pfetch
       zoxide
@@ -94,6 +122,8 @@ in
       vscode
       ripgrep
       thunderbird
+      arandr
+      xonotic
     ];
   };
 
@@ -123,6 +153,7 @@ in
           PIP_DISABLE_PIP_VERSION_CHECK = "1";
           SSH_ASKPASS = ""; # Remove stupid credential popup
         };
+        stateVersion = "22.05";
       };
       programs = {
         git = {
@@ -160,6 +191,11 @@ in
           };
           initExtra = ''
           eval "$(zoxide init zsh)"
+
+          # Alias functions
+          gitc() {
+            git clone ssh://git@github.com/$1/$2.git
+          }
           '';
         };
         bash.enable = true;
