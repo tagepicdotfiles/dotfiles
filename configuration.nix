@@ -133,6 +133,9 @@ in
       thunderbird
       arandr
       xonotic
+      thefuck
+      bore-cli
+      blender
     ];
   };
 
