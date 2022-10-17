@@ -108,7 +108,8 @@ in
       libreoffice
       spotify
       keepassxc
-      polymc
+      # Revert to using multimc or similar?
+      # polymc
       btop
       neofetch
       pfetch
