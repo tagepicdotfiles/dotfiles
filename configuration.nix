@@ -3,8 +3,8 @@ let
   dotfiles = pkgs.fetchFromGitHub {
     owner = "tagepicdotfiles";
     repo = "dotfiles";
-    rev = "5cba525a3b51804d50825f8a194d2caebaca1fe1";
-    sha256 = "sha256-vVsWW2C8nW5qH7qIq4S3AFtzdzXvBG2/Gz0hFV7h7YQ=";
+    rev = "9540d0ee73744fb9ec5941a237d574b258d5ff24";
+    sha256 = "7h6dUwto+45bECArPIzi2k1kZY7kJVjQDikYlrCCyFI=";
   };
 in
 {
