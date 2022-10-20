@@ -47,7 +47,6 @@ in
       enable = true;
     };
     windowManager.dwm.enable = true;
-    desktopManager.gnome.enable = true; # TODO: Fix gnome-keyring mess
     displayManager = {
       lightdm = {
         enable = true;
@@ -62,36 +61,10 @@ in
     };
   };
 
-  # Disable non-useful gnome packages
-  environment.gnome.excludePackages = (with pkgs; [
-    gnome-photos
-    gnome-tour
-    gnome-connections
-    gnome-text-editor
-  ]) ++ (with pkgs.gnome; [
-    gnome-calculator
-    cheese
-    yelp
-    nautilus
-    rygel
-    gnome-music
-    gedit
-    epiphany
-    geary
-    evince
-    gnome-calendar
-    gnome-contacts
-    gnome-disk-utility
-    gnome-font-viewer
-    gnome-keyring
-    gnome-logs
-    gnome-maps
-    gnome-clocks
-    seahorse
-  ]);
-
   # Pritning via CUPS
   services.printing.enable = true;
+
+  programs.nm-applet.enable = true;
 
   # Enable sound.
   sound.enable = true;
