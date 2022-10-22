@@ -6,6 +6,7 @@ let
     rev = "9540d0ee73744fb9ec5941a237d574b258d5ff24";
     sha256 = "7h6dUwto+45bECArPIzi2k1kZY7kJVjQDikYlrCCyFI=";
   };
+  stable = import <nixos-stable> {config.allowUnfree = true;};
 in
 {
   imports =
@@ -37,38 +38,40 @@ in
   # Locale
   i18n.defaultLocale = "en_US.UTF-8";
   console.keyMap = "no";
-  services.xserver.layout = "no";
 
-  # WM/DE
-  services.picom.enable = true;
-  services.xserver = {
-    enable = true;
-    libinput = {
+  services = {
+    # WM
+    picom.enable = true;
+    xserver = {
       enable = true;
-    };
-    windowManager.dwm.enable = true;
-    displayManager = {
-      lightdm = {
+      layout = "no";
+      libinput = {
         enable = true;
-        background = pkgs.fetchFromGitHub {
-          owner = "DenverCoder1";
-          repo = "minimalistic-wallpaper-collection";
-          rev = "eeb7aed40c8bcae614c48a4a17913e9ffd2d809b";
-          sha256 = "8LH5Nc1krDmRXLk0/2b+RMlgNInNtioSoQNeId74KGM=";
-        } + "/images/alena-aenami-escape.jpg";
       };
-      startx.enable = true;
+      windowManager.dwm.enable = true;
+      displayManager = {
+        lightdm = {
+          enable = true;
+          background = pkgs.fetchFromGitHub {
+            owner = "DenverCoder1";
+            repo = "minimalistic-wallpaper-collection";
+            rev = "eeb7aed40c8bcae614c48a4a17913e9ffd2d809b";
+            sha256 = "8LH5Nc1krDmRXLk0/2b+RMlgNInNtioSoQNeId74KGM=";
+          } + "/images/alena-aenami-escape.jpg";
+        };
+        startx.enable = true;
+      };
     };
+
+    # Hardware
+    printing.enable = true;
   };
-
-  # Pritning via CUPS
-  services.printing.enable = true;
-
   programs.nm-applet.enable = true;
 
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
+  hardware.bluetooth.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.epic = {
@@ -110,12 +113,14 @@ in
       thefuck
       bore-cli
       blender
+      obs-studio
     ];
   };
 
   home-manager = {
     useGlobalPkgs = true;
     users.epic = { pkgs, ...}: {
+      manual.manpages.enable = false;
       home = {
         file = {
           ".config/oh-my-zsh/epic.zsh-theme".source = dotfiles + "/epic.zsh-theme";
@@ -201,7 +206,29 @@ in
     polybar
     dmenu
     killall
+    blueberry
+    stable.wpa_supplicant
+    zip
+    unzip
   ];
+
+  systemd.user.services = {
+    xbindkeys = {
+      enable = false;
+      description = "Keybinds!";
+      wantedBy = ["graphical-session.target"];
+      partOf = ["graphical-session.target"];
+      serviceConfig.ExecStart = "${pkgs.xbindkeys}/bin/xbindkeys";
+    };
+    blueberry = {
+      enable = false;
+      description = "Bluetooth applet!";
+      wantedBy = ["graphical-session.target"];
+      partOf = ["graphical-session.target"];
+      serviceConfig.ExecStart = "${pkgs.blueberry}/bin/blueberry-tray";
+    };
+
+  };
 
   # Fonts
   fonts.fonts = with pkgs; [
