@@ -27,7 +27,7 @@
     XF86AudioPrev
 "playerctl previous"
     m:0x1 + c:173
-    Shift + XF86AudioPrevious
+    Shift + XF86AudioPrev
 
 # Screen lock
 "dm-tool lock"
