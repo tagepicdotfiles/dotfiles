@@ -19,9 +19,15 @@
 "playerctl -p spotify next"
     m:0x0 + c:171
     XF86AudioNext
+"playerctl next"
+    m:0x1 + c:171
+    Shift + XF86AudioNext
 "playerctl -p spotify previous"
     m:0x0 + c:173
     XF86AudioPrev
+"playerctl previous"
+    m:0x1 + c:173
+    Shift + XF86AudioPrevious
 
 # Screen lock
 "dm-tool lock"

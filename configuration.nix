@@ -3,8 +3,8 @@ let
   dotfiles = pkgs.fetchFromGitHub {
     owner = "tagepicdotfiles";
     repo = "dotfiles";
-    rev = "9540d0ee73744fb9ec5941a237d574b258d5ff24";
-    sha256 = "7h6dUwto+45bECArPIzi2k1kZY7kJVjQDikYlrCCyFI=";
+    rev = "352b7c6accab01cac83850c42ad0a358c80ca256";
+    sha256 = "DU65iyEr5SQj5r/Rn0fcrbMEVrWwsOOJP9yvnsH7lZE=";
   };
   stable = import <nixos-stable> {config.allowUnfree = true;};
 in
@@ -33,7 +33,6 @@ in
 
   # Set your time zone.
   time.timeZone = "Europe/Oslo";
-
 
   # Locale
   i18n.defaultLocale = "en_US.UTF-8";
@@ -114,6 +113,10 @@ in
       bore-cli
       blender
       obs-studio
+      prismlauncher
+      comma
+      rust-analyzer
+      insomnia
     ];
   };
 
@@ -160,6 +163,7 @@ in
             pull = {
               rebase = true;
             };
+            credential.helper = "store";
           };
         };
 
@@ -207,7 +211,6 @@ in
     dmenu
     killall
     blueberry
-    stable.wpa_supplicant
     zip
     unzip
   ];
@@ -240,7 +243,6 @@ in
     (self: super: {
       dwm = super.dwm.overrideAttrs (oldAttrs: rec {
         src = pkgs.fetchFromGitHub {
-
           owner = "tagepicdotfiles";
           repo = "dwm";
           rev = "c2cc0efebb4d3e9b2f8615a36551ec6a6b64e93f";
@@ -268,8 +270,6 @@ in
 
   # Add 32 bit drivers for steam
   hardware.opengl.driSupport32Bit = true;
-
-
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
