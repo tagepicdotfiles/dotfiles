@@ -3,8 +3,8 @@ let
   dotfiles = pkgs.fetchFromGitHub {
     owner = "tagepicdotfiles";
     repo = "dotfiles";
-    rev = "352b7c6accab01cac83850c42ad0a358c80ca256";
-    sha256 = "DU65iyEr5SQj5r/Rn0fcrbMEVrWwsOOJP9yvnsH7lZE=";
+    rev = "aef9e3ce8fc8d836d8740520784b5bce57d9468e";
+    sha256 = "sha256-v6yLcOJgwKzs9LZ9604vo0z8I40eeN5sSnUTUeGsnkw=";
   };
   stable = import <nixos-stable> {config.allowUnfree = true;};
 in
@@ -176,8 +176,8 @@ in
             custom = "$HOME/.config/oh-my-zsh/";
           };
           shellAliases = {
-            pushpwd = "scp ~/.config/keepassxc/Passwords.kdbx root@vulpix.farfrom.world:~/Passwords.kdbx";
-            pullpwd = "scp root@vulpix.farfrom.world:~/Passwords.kdbx ~/.config/keepassxc/Passwords.kdbx";
+            pushpwd = "scp ~/.config/keepassxc/Passwords.kdbx kratos.farfrom.world:~/Passwords.kdbx";
+            pullpwd = "scp kratos.farfrom.world:~/Passwords.kdbx ~/.config/keepassxc/Passwords.kdbx";
             cd = "z";
             nix = "nix --experimental-features nix-command";
             nix-view = "nix --experimental-features nix-command edit -f '<nixpkgs>'";
