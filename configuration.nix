@@ -3,8 +3,8 @@ let
   dotfiles = pkgs.fetchFromGitHub {
     owner = "tagepicdotfiles";
     repo = "dotfiles";
-    rev = "aef9e3ce8fc8d836d8740520784b5bce57d9468e";
-    sha256 = "sha256-v6yLcOJgwKzs9LZ9604vo0z8I40eeN5sSnUTUeGsnkw=";
+    rev = "ea6231573a8b8f34579681dcc19b2db6d8609dfc";
+    sha256 = "FRT1M0ta760zensT2LuYuhURQusdlVW6Xgs3+97euH8=";
   };
   stable = import <nixos-stable> {config.allowUnfree = true;};
 in
