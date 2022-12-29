@@ -10,24 +10,12 @@
     XF86AudioLowerVolume
 
 # Music
-"playerctl -p spotify play-pause"
-    m:0x0 + c:172
-    XF86AudioPlay
-"playerctl play-pause"
-    m:0x1 + c:172
-    Shift + XF86AudioPlay
-"playerctl -p spotify next"
-    m:0x0 + c:171
-    XF86AudioNext
-"playerctl next"
-    m:0x1 + c:171
-    Shift + XF86AudioNext
-"playerctl -p spotify previous"
-    m:0x0 + c:173
-    XF86AudioPrev
 "playerctl previous"
-    m:0x1 + c:173
-    Shift + XF86AudioPrev
+    F10
+"playerctl play-pause"
+    F11
+"playerctl next"
+    F12
 
 # Screen lock
 "dm-tool lock"
