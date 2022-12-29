@@ -15,6 +15,8 @@ in
       <home-manager/nixos>
     ];
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -117,6 +119,7 @@ in
       comma
       rust-analyzer
       insomnia
+      jdk17_headless # For vault hunters 1.18
     ];
   };
 
@@ -163,6 +166,7 @@ in
             pull = {
               rebase = true;
             };
+            init.defaultBranch = "master";
             credential.helper = "store";
           };
         };
@@ -193,13 +197,33 @@ in
           }
           '';
         };
-        bash.enable = true;
+        bash = {
+          enable = true;
+          initExtra = "zsh";
+        };
+        # neovim = {
+        #   enable = true;
+        #   plugins = with pkgs.vimPlugins; [
+        #     telescope-nvim
+        #     nvim-lspconfig
+        #     nvim-cmp
+        #     cmp-nvim-lsp
+        #     onedarkpro-nvim
+        #     lightline-vim
+        #     fidget-nvim
+        #     snippets-nvim
+        #     vim-gitgutter
+        #     dashboard-nvim
+        #     vim-commentary
+        #     nvim-surround
+        #     emmet-vim
+        #   ];
+        # };
       };
     };
   };
 
   environment.systemPackages = with pkgs; [
-    neovim
     wget
     git
     python3
@@ -213,6 +237,8 @@ in
     blueberry
     zip
     unzip
+    pavucontrol
+    neovim
   ];
 
   systemd.user.services = {
