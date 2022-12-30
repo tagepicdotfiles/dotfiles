@@ -3,8 +3,8 @@ let
   dotfiles = pkgs.fetchFromGitHub {
     owner = "tagepicdotfiles";
     repo = "dotfiles";
-    rev = "b8af88959b55d39ce884d3e2a240a4ef20e65762";
-    sha256 = "SjERQw5Pfi0bCgEAZGb9RHuYj4GLUA/jsv188tM9rHk=";
+    rev = "ce6656408e1151b585dae6e20834cc285199ce84";
+    sha256 = "RVsXwTgWtBHw3t8/ZFBXwNaiSYEMDv9kxjUA+oXbchY=";
   };
   stable = import <nixos-stable> {config.allowUnfree = true;};
 in
@@ -201,24 +201,24 @@ in
           enable = true;
           initExtra = "zsh";
         };
-        # neovim = {
-        #   enable = true;
-        #   plugins = with pkgs.vimPlugins; [
-        #     telescope-nvim
-        #     nvim-lspconfig
-        #     nvim-cmp
-        #     cmp-nvim-lsp
-        #     onedarkpro-nvim
-        #     lightline-vim
-        #     fidget-nvim
-        #     snippets-nvim
-        #     vim-gitgutter
-        #     dashboard-nvim
-        #     vim-commentary
-        #     nvim-surround
-        #     emmet-vim
-        #   ];
-        # };
+        neovim = {
+          enable = true;
+          plugins = with pkgs.vimPlugins; [
+            telescope-nvim
+            nvim-lspconfig
+            nvim-cmp
+            cmp-nvim-lsp
+            onedark-nvim
+            lightline-vim
+            fidget-nvim
+            snippets-nvim
+            vim-gitgutter
+            dashboard-nvim
+            vim-commentary
+            nvim-surround
+            emmet-vim
+          ];
+        };
       };
     };
   };
