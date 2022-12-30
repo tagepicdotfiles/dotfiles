@@ -1,7 +1,6 @@
 # Volume control
 "maim -u -s -B | xclip -selection clipboard -t image/png"
-    m:0x0 + c:107
-    Print
+    F12
 "amixer sset Master 5%+"
     m:0x0 + c:123
     XF86AudioRaiseVolume
@@ -11,11 +10,11 @@
 
 # Music
 "playerctl previous"
-    F10
+    F9
 "playerctl play-pause"
-    F11
+    F10
 "playerctl next"
-    F12
+    F11
 
 # Screen lock
 "dm-tool lock"
