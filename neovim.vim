@@ -46,7 +46,7 @@ imap <C-s> <cmd>lua return require'snippets'.expand_or_advance(1)<CR>
 "     \ 'style': 'warmer',
 " \}
 " set termguicolors
-colorscheme onedark
+colorscheme spacecamp_lite
 
 "" Lightline
 let g:lightline = {'colorscheme': 'jellybeans', 'active': {}}
