@@ -148,7 +148,7 @@ headers = {"Authorization": str(authentication)}
 }
 
 -- Telescope
-require'telescope'.load_extension('zoxide')
+--require'telescope'.load_extension('zoxide')
 
 -- Treesitter
 require'nvim-treesitter.configs'.setup {

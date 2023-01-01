@@ -3,8 +3,8 @@ let
   dotfiles = pkgs.fetchFromGitHub {
     owner = "tagepicdotfiles";
     repo = "dotfiles";
-    rev = "ce6656408e1151b585dae6e20834cc285199ce84";
-    sha256 = "RVsXwTgWtBHw3t8/ZFBXwNaiSYEMDv9kxjUA+oXbchY=";
+    rev = "167d9f5db704c4803c244318063e17e3a52d005d";
+    sha256 = "kHwfknJ8aUErp7rP5uSAWMN/2vjcvcAavxMXQYkiZmk=";
   };
   stable = import <nixos-stable> {config.allowUnfree = true;};
 in
@@ -139,10 +139,10 @@ in
           ".config/polybar/scripts/get_volume.sh".source = dotfiles + "/polybar/scripts/get_volume.sh";
 
           # NeoVIM
-          ".config/nvim/init.vim".source = dotfiles + "/neovim.vim";
-          ".local/share/nvim/site/autoload/plug.vim".source = builtins.fetchurl(
-            "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-          );
+          #".config/nvim/init.vim".source = dotfiles + "/neovim.vim";
+          #".local/share/nvim/site/autoload/plug.vim".source = builtins.fetchurl(
+          #  "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+          #);
         };
         sessionVariables = {
           EDITOR = "nvim";
@@ -203,6 +203,7 @@ in
         };
         neovim = {
           enable = true;
+	  extraConfig = "so " + dotfiles + "/neovim.vim";
           plugins = with pkgs.vimPlugins; [
             telescope-nvim
             nvim-lspconfig
@@ -238,7 +239,7 @@ in
     zip
     unzip
     pavucontrol
-    neovim
+    #neovim
   ];
 
   systemd.user.services = {
