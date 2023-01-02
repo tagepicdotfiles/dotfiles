@@ -3,8 +3,8 @@ let
   dotfiles = pkgs.fetchFromGitHub {
     owner = "tagepicdotfiles";
     repo = "dotfiles";
-    rev = "f621ffa6a1984992e7d9804c638160483f7f7307";
-    sha256 = "B1QaajZhidXCogj4iG9qjCxqILhbMg5CnMAgc4zYJ20=";
+    rev = "4015a678a8b0755f24a5f12f867fe27afc2f990d";
+    sha256 = "5/MUDIvCpy/TQ8cABo8o/QtHlWBAGe+XNz10m1dijw4=";
   };
   stable = import <nixos-stable> {config.allowUnfree = true;};
 in
@@ -210,7 +210,6 @@ in
             nvim-cmp
             cmp-nvim-lsp
             SpaceCamp
-            onedark-nvim
             lightline-vim
             fidget-nvim
             snippets-nvim
@@ -219,7 +218,7 @@ in
             vim-commentary
             nvim-surround
             emmet-vim
-            nvim-treesitter
+            nvim-treesitter.withAllGrammars
           ];
         };
       };
