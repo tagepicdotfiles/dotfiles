@@ -42,11 +42,8 @@ imap <C-s> <cmd>lua return require'snippets'.expand_or_advance(1)<CR>
 " Plugin config
 
 "" Onedark
-" let g:onedark_config = {
-"     \ 'style': 'warmer',
-" \}
-" set termguicolors
-colorscheme spacecamp_lite
+lua require('onedark').setup { style = "darker", colors = { bg0 = "#262626" }}
+colorscheme onedark
 
 "" Lightline
 let g:lightline = {'colorscheme': 'jellybeans', 'active': {}}

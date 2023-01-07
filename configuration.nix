@@ -209,7 +209,7 @@ in
             nvim-lspconfig
             nvim-cmp
             cmp-nvim-lsp
-            SpaceCamp
+            onedark-nvim
             lightline-vim
             fidget-nvim
             snippets-nvim
