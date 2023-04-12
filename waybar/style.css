@@ -1,0 +1,42 @@
+* {
+    all: unset;
+    font-family: FontAwesome, 'JetBrains Mono';
+    font-size: 13px;
+}
+
+#waybar {
+    padding: 4px 0;
+    background-color: #141414;
+}
+
+tooltip, .popup {
+    background: #141414;
+    border: 1px solid #353333;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+#window {
+    padding: 4px 0;
+}
+
+#workspaces button {
+    padding: 0 0.5rem;
+    border: solid;
+    border-bottom-width: 2px;
+    border-color: transparent;
+}
+
+#workspaces button.active {
+    /* background-color: #64726D; */
+    color: #818cf8;
+    border-color: #818cf8;
+}
+
+#tray, #memory, #cpu, #battery, #clock {
+    padding: 0 10px;
+}
+
+#network, #wireplumber {
+    padding: 0 6px;
+}

@@ -1,12 +1,19 @@
 { config, pkgs, ... }:
 let
-  dotfiles = pkgs.fetchFromGitHub {
-    owner = "tagepicdotfiles";
-    repo = "dotfiles";
-    rev = "772d1f7d5018edb2a94e2c4b64ab144c3466b3ae";
-    sha256 = "WebxDzQBE47FpC8HUyEzlQDg/FGSM9lJ/udVAsu1NVE=";
-  };
+  /* dotfiles = pkgs.fetchFromGitHub { */
+  /*   owner = "tagepicdotfiles"; */
+  /*   repo = "dotfiles"; */
+  /*   rev = "772d1f7d5018edb2a94e2c4b64ab144c3466b3ae"; */
+  /*   sha256 = "WebxDzQBE47FpC8HUyEzlQDg/FGSM9lJ/udVAsu1NVE="; */
+  /* }; */
+  dotfiles = "/home/epic/Development/dotfiles";
   stable = import <nixos-stable> {config.allowUnfree = true;};
+  wallpaper = pkgs.fetchFromGitHub {
+    owner = "DenverCoder1";
+    repo = "minimalistic-wallpaper-collection";
+    rev = "1f5e0d1bc328600a3ab664ae3bb9b9a43b68c589";
+    sha256 = "GQfT43YWyKeWxIRy/qJKjuaJrOsxFuXrXck9NNeQjGw=";
+  } + "/images/alena-aenami-7pm.png";
 in
 {
   imports =
@@ -53,28 +60,30 @@ in
       displayManager = {
         lightdm = {
           enable = true;
-          background = pkgs.fetchFromGitHub {
-            owner = "DenverCoder1";
-            repo = "minimalistic-wallpaper-collection";
-            rev = "eeb7aed40c8bcae614c48a4a17913e9ffd2d809b";
-            sha256 = "8LH5Nc1krDmRXLk0/2b+RMlgNInNtioSoQNeId74KGM=";
-          } + "/images/alena-aenami-escape.jpg";
+          background = wallpaper;
         };
         startx.enable = true;
       };
     };
 
+
     # Hardware
     printing.enable = true;
+    pipewire = {
+        enable = true;
+        wireplumber.enable = true;
+    };
   };
   programs = {
     nm-applet.enable = true;
     zsh.enable = true;
+    hyprland.enable = true;
   };
+  xdg.portal.wlr.enable = true;
 
   # Enable sound.
   sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  /* hardware.pulseaudio.enable = true; */
   hardware.bluetooth.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -144,6 +153,15 @@ in
           ".config/polybar/bar.sh".source = dotfiles + "/polybar/startbar.sh";
           ".config/polybar/polybar.ini".source = dotfiles + "/polybar/polybar.ini";
           ".config/polybar/scripts/get_volume.sh".source = dotfiles + "/polybar/scripts/get_volume.sh";
+
+          # Hyprland
+          ".config/hypr/hyprland.conf".source = dotfiles + "/hyprland.conf";
+          ".config/hypr/hyprpaper.conf".source = dotfiles + "/hyprpaper.conf";
+          ".config/hypr/wallpaper.png".source = wallpaper;
+
+          # Waybar
+          ".config/waybar/config".source = dotfiles + "/waybar/config.json";
+          ".config/waybar/style.css".source = dotfiles + "/waybar/style.css";
 
           # NeoVIM
           #".config/nvim/init.vim".source = dotfiles + "/neovim.vim";
@@ -248,7 +266,9 @@ in
     zip
     unzip
     pavucontrol
-    #neovim
+    wofi
+    hyprpaper
+    waybar
   ];
 
   systemd.user.services = {
@@ -300,6 +320,10 @@ in
         };
         patches = []; # Not neccesary, just causes problems
         buildInputs = oldAttrs.buildInputs ++ [ pkgs.jsoncpp ];
+      });
+      waybar = super.waybar.overrideAttrs (oldAttrs: rec {
+        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+        /* preBuildPhase = "sed -i -e 's/zext_workspace_handle_v1_activate(workspace_handle_);/const std::string command = \"hyprctl dispatch workspace \" + name_;\\n\\tsystem(command.c_str());/g' src/modules/wlr/workspace_manager.cpp"; */
       });
     })
   ];
