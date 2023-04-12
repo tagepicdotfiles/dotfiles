@@ -3,8 +3,8 @@ let
   dotfiles = pkgs.fetchFromGitHub {
     owner = "tagepicdotfiles";
     repo = "dotfiles";
-    rev = "4015a678a8b0755f24a5f12f867fe27afc2f990d";
-    sha256 = "5/MUDIvCpy/TQ8cABo8o/QtHlWBAGe+XNz10m1dijw4=";
+    rev = "772d1f7d5018edb2a94e2c4b64ab144c3466b3ae";
+    sha256 = "WebxDzQBE47FpC8HUyEzlQDg/FGSM9lJ/udVAsu1NVE=";
   };
   stable = import <nixos-stable> {config.allowUnfree = true;};
 in
@@ -67,7 +67,10 @@ in
     # Hardware
     printing.enable = true;
   };
-  programs.nm-applet.enable = true;
+  programs = {
+    nm-applet.enable = true;
+    zsh.enable = true;
+  };
 
   # Enable sound.
   sound.enable = true;
@@ -120,6 +123,10 @@ in
       rust-analyzer
       insomnia
       jdk17_headless # For vault hunters 1.18
+      pyright
+      nodejs
+      gnumake
+      cope
     ];
   };
 
@@ -166,6 +173,7 @@ in
             pull = {
               rebase = true;
             };
+            push.autoSetupRemote = true;
             init.defaultBranch = "master";
             credential.helper = "store";
           };
