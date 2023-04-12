@@ -14,6 +14,7 @@
     "cpu",
     "battery",
     "network",
+    "wireplumber",
     "clock"
   ],
   "wlr/workspaces": {

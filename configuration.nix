@@ -72,6 +72,9 @@ in
     pipewire = {
         enable = true;
         wireplumber.enable = true;
+        alsa.enable = true;
+        alsa.support32Bit = true;
+        pulse.enable = true;
     };
   };
   programs = {
@@ -82,7 +85,7 @@ in
   xdg.portal.wlr.enable = true;
 
   # Enable sound.
-  sound.enable = true;
+  #sound.enable = true;
   /* hardware.pulseaudio.enable = true; */
   hardware.bluetooth.enable = true;
 
@@ -269,6 +272,8 @@ in
     wofi
     hyprpaper
     waybar
+    slurp
+    xdg-desktop-portal-hyprland
   ];
 
   systemd.user.services = {
@@ -323,7 +328,16 @@ in
       });
       waybar = super.waybar.overrideAttrs (oldAttrs: rec {
         mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-        /* preBuildPhase = "sed -i -e 's/zext_workspace_handle_v1_activate(workspace_handle_);/const std::string command = \"hyprctl dispatch workspace \" + name_;\\n\\tsystem(command.c_str());/g' src/modules/wlr/workspace_manager.cpp"; */
+        preBuildPhase = "sed -i -e 's/zext_workspace_handle_v1_activate(workspace_handle_);/const std::string command = \"hyprctl dispatch workspace \" + name_;\\n\\tsystem(command.c_str());/g' src/modules/wlr/workspace_manager.cpp";
+      });
+      # Wayland wrappers
+      signal-desktop = super.signal-desktop.overrideAttrs (oldAttrs: rec {
+        preFixup = oldAttrs.preFixup + ''
+            gappsWrapperArgs+=(
+                --add-flags "--enable-features=UseOzonePlatform"
+                --add-flags "--ozone-platform=wayland"
+            )
+        '';
       });
     })
   ];
