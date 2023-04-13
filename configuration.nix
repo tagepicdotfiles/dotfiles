@@ -56,13 +56,13 @@ in
       libinput = {
         enable = true;
       };
-      windowManager.dwm.enable = true;
+      /* windowManager.dwm.enable = true; */
       displayManager = {
         lightdm = {
           enable = true;
           background = wallpaper;
         };
-        startx.enable = true;
+        /* startx.enable = true; */
       };
     };
 
@@ -110,9 +110,9 @@ in
       steam
       obsidian
       alacritty
-      maim
-      xclip
-      xbindkeys
+      #maim
+      #xclip
+      #xbindkeys
       playerctl
       poetry
       nodePackages.pyright
@@ -263,7 +263,7 @@ in
     gcc
     nodePackages.pyright
     polybar
-    dmenu
+    #dmenu
     killall
     blueberry
     zip
@@ -274,6 +274,9 @@ in
     waybar
     slurp
     xdg-desktop-portal-hyprland
+    wl-clipboard
+    grim
+    slurp
   ];
 
   systemd.user.services = {
@@ -302,30 +305,30 @@ in
   # Patches
   nixpkgs.overlays = [
     (self: super: {
-      dwm = super.dwm.overrideAttrs (oldAttrs: rec {
-        src = pkgs.fetchFromGitHub {
-          owner = "tagepicdotfiles";
-          repo = "dwm";
-          rev = "c2cc0efebb4d3e9b2f8615a36551ec6a6b64e93f";
-          sha256 = "sha256-w/oUkmrT8CIm7FhG1s01EJwuMVSaod8Z/mIiZ31l+EA=";
-        };
-        buildInputs = oldAttrs.buildInputs ++ [ pkgs.yajl ];
-        configFile = pkgs.writeText "config.def.h" (
-          builtins.readFile(builtins.fetchurl("https://raw.githubusercontent.com/tagepicdotfiles/dotfiles/master/dwmconfig.h"))
-        );
-        postPatch = "${oldAttrs.postPatch}\n cp ${configFile} config.def.h";
-      });
-      polybar = super.polybar.overrideAttrs (oldAttrs: rec {
-        src = pkgs.fetchFromGitHub {
-          owner = "dakata1337";
-          repo = "polybar-dwm-module";
-          rev = "229846f79143f268b5453cbc68fa69201367cdb5";
-          sha256 = "sha256-ljHTrJ1FgFobRmneUuq88lvQrnSiIYihsoVepkF/ZOg=";
-          fetchSubmodules = true;
-        };
-        patches = []; # Not neccesary, just causes problems
-        buildInputs = oldAttrs.buildInputs ++ [ pkgs.jsoncpp ];
-      });
+      /* dwm = super.dwm.overrideAttrs (oldAttrs: rec { */
+      /*   src = pkgs.fetchFromGitHub { */
+      /*     owner = "tagepicdotfiles"; */
+      /*     repo = "dwm"; */
+      /*     rev = "c2cc0efebb4d3e9b2f8615a36551ec6a6b64e93f"; */
+      /*     sha256 = "sha256-w/oUkmrT8CIm7FhG1s01EJwuMVSaod8Z/mIiZ31l+EA="; */
+      /*   }; */
+      /*   buildInputs = oldAttrs.buildInputs ++ [ pkgs.yajl ]; */
+      /*   configFile = pkgs.writeText "config.def.h" ( */
+      /*     builtins.readFile(builtins.fetchurl("https://raw.githubusercontent.com/tagepicdotfiles/dotfiles/master/dwmconfig.h")) */
+      /*   ); */
+      /*   postPatch = "${oldAttrs.postPatch}\n cp ${configFile} config.def.h"; */
+      /* }); */
+      /* polybar = super.polybar.overrideAttrs (oldAttrs: rec { */
+      /*   src = pkgs.fetchFromGitHub { */
+      /*     owner = "dakata1337"; */
+      /*     repo = "polybar-dwm-module"; */
+      /*     rev = "229846f79143f268b5453cbc68fa69201367cdb5"; */
+      /*     sha256 = "sha256-ljHTrJ1FgFobRmneUuq88lvQrnSiIYihsoVepkF/ZOg="; */
+      /*     fetchSubmodules = true; */
+      /*   }; */
+      /*   patches = []; # Not neccesary, just causes problems */
+      /*   buildInputs = oldAttrs.buildInputs ++ [ pkgs.jsoncpp ]; */
+      /* }); */
       waybar = super.waybar.overrideAttrs (oldAttrs: rec {
         mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
         preBuildPhase = "sed -i -e 's/zext_workspace_handle_v1_activate(workspace_handle_);/const std::string command = \"hyprctl dispatch workspace \" + name_;\\n\\tsystem(command.c_str());/g' src/modules/wlr/workspace_manager.cpp";
