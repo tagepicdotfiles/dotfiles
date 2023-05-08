@@ -31,14 +31,20 @@ in
   networking.hostName = "kraken";
 
   # Networking
-  networking.wireless.enable = false;  # wpa_supplicant # TODO: Switch to this
-  networking.networkmanager.enable = true;  # I currently use this because of GNOME
+  networking.networkmanager.enable = true;
 
   # Firewall
   networking.firewall.allowedTCPPorts = [];
   networking.firewall.allowedUDPPorts = [];
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    packageOverrides = pkgs: {
+        nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
+            inherit pkgs;
+        };
+    };
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Oslo";
@@ -95,7 +101,7 @@ in
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-      firefox
+      #firefox
       discord
       libreoffice
       spotify
@@ -181,6 +187,36 @@ in
         stateVersion = "22.05";
       };
       programs = {
+        firefox = {
+            enable = true;
+            
+            profiles.main = {
+                isDefault = true;
+                search.default = "DuckDuckGo";
+                settings = {
+                    # Disable swipe navigation
+                    "browser.gesture.swipe.left" = "";
+                    "browser.gesture.swipe.right" = "";
+                };
+                bookmarks = [
+                    {
+                        name = "Nixpkgs";
+                        url = "https://search.nixos.org/packages";
+                    }
+                    {
+                        name = "Home Manager";
+                        url = "https://nix-community.github.io/home-manager/options.html";
+                    }
+                ];
+            };
+
+            # Wayland. See firefox docs
+            package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
+                extraPolicies = {
+                    ExtensionSettings = {};
+                };
+            };
+        };
         git = {
           enable = true;
           userName = "TAG-Epic";
@@ -247,7 +283,6 @@ in
             vim-commentary
             nvim-surround
             emmet-vim
-            nvim-treesitter.withAllGrammars
           ];
         };
       };
