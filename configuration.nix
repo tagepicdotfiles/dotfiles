@@ -193,29 +193,44 @@ in
             profiles.main = {
                 isDefault = true;
                 search.default = "DuckDuckGo";
+                search.force = true;
                 settings = {
                     # Disable swipe navigation
                     "browser.gesture.swipe.left" = "";
                     "browser.gesture.swipe.right" = "";
+
+                    # Hide "Import bookmarks" button
+                    "browser.bookmarks.addedImportButton" = false;
+
+                    # Metrics
+                    "toolkit.telemetry.enabled" = false;
+                    "datareporting.policy.dataSubmissionEnabled" = false;
+                    "datareporting.healthreport.service.enabled" = false;
+                    "datareporting.healthreport.uploadEnabled" = false;
                 };
                 bookmarks = [
                     {
-                        name = "Nixpkgs";
-                        url = "https://search.nixos.org/packages";
-                    }
-                    {
-                        name = "Home Manager";
-                        url = "https://nix-community.github.io/home-manager/options.html";
+                        toolbar = true;
+                        bookmarks = [
+                            {
+                                name = "Nixpkgs";
+                                url = "https://search.nixos.org/packages";
+                            }
+                            {
+                                name = "Home Manager";
+                                url = "https://nix-community.github.io/home-manager/options.html";
+                            }
+                        ];
                     }
                 ];
             };
 
             # Wayland. See firefox docs
-            package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
-                extraPolicies = {
-                    ExtensionSettings = {};
-                };
-            };
+            #package = pkgs.wrapFirefox pkgs.firefox-unwrapped {
+            #    extraPolicies = {
+            #        ExtensionSettings = {};
+            #    };
+            #};
         };
         git = {
           enable = true;
