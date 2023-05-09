@@ -199,6 +199,10 @@ in
                     "browser.gesture.swipe.left" = "";
                     "browser.gesture.swipe.right" = "";
 
+                    # Disable zoom gesture
+                    "browser.gesture.pinch.in" = "";
+                    "browser.gesture.pinch.out" = "";
+
                     # Hide "Import bookmarks" button
                     "browser.bookmarks.addedImportButton" = false;
 
