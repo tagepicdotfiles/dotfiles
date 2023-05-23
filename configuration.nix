@@ -53,6 +53,8 @@ in
   i18n.defaultLocale = "en_US.UTF-8";
   console.keyMap = "no";
 
+  virtualisation.docker.enable = true;
+
   services = {
     # WM
     picom.enable = true;
@@ -88,7 +90,7 @@ in
     zsh.enable = true;
     hyprland.enable = true;
   };
-  xdg.portal.wlr.enable = true;
+  #xdg.portal.wlr.enable = true;
 
   # Enable sound.
   #sound.enable = true;
@@ -96,18 +98,18 @@ in
   hardware.bluetooth.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.groups = {
+    wireshark = {};
+  };
   users.users.epic = {
     shell = pkgs.zsh;
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "wireshark" "docker" "tty" "dialout" ];
     packages = with pkgs; [
-      #firefox
       discord
       libreoffice
-      spotify
+      #spotify
       keepassxc
-      # Revert to using multimc or similar?
-      # polymc
       btop
       neofetch
       pfetch
@@ -116,15 +118,12 @@ in
       steam
       obsidian
       alacritty
-      #maim
-      #xclip
-      #xbindkeys
       playerctl
       poetry
       nodePackages.pyright
-      brightnessctl
+      #brightnessctl
       prusa-slicer
-      cloc
+      #cloc
       gh
       onefetch
       vscode
@@ -132,17 +131,18 @@ in
       thunderbird
       arandr
       xonotic
-      thefuck
+      #thefuck
       bore-cli
-      blender
+      #blender
       obs-studio
-      prismlauncher
-      comma
+      #prismlauncher
+      #comma
       rust-analyzer
       insomnia
-      jdk17_headless # For vault hunters 1.18
+      #jdk17_headless # For vault hunters 1.18
       pyright
       nodejs
+      nodePackages.pnpm
       gnumake
       cope
     ];
@@ -302,6 +302,7 @@ in
             vim-commentary
             nvim-surround
             emmet-vim
+            nvim-treesitter.withAllGrammars
           ];
         };
       };
@@ -314,9 +315,10 @@ in
     python3
     rustc
     cargo
+    rustfmt
     gcc
     nodePackages.pyright
-    polybar
+    #polybar
     #dmenu
     killall
     blueberry
@@ -326,11 +328,12 @@ in
     wofi
     hyprpaper
     waybar
-    slurp
-    xdg-desktop-portal-hyprland
+    #xdg-desktop-portal-hyprland
     wl-clipboard
     grim
     slurp
+    wireguard-tools
+    dig
   ];
 
   systemd.user.services = {
