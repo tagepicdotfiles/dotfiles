@@ -57,7 +57,10 @@ in
 
   services = {
     # WM
-    picom.enable = true;
+    openvpn.servers = {
+        htb = { config = '' config /etc/openvpn/htb.conf ''; };
+    };
+    #picom.enable = true;
     xserver = {
       enable = true;
       layout = "no";
