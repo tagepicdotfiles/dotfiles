@@ -58,7 +58,7 @@ in
   services = {
     # WM
     openvpn.servers = {
-        htb = { config = '' config /etc/openvpn/htb.conf ''; };
+        #htb = { config = '' config /etc/openvpn/htb.conf ''; };
     };
     #picom.enable = true;
     xserver = {
@@ -138,7 +138,7 @@ in
       bore-cli
       #blender
       obs-studio
-      #prismlauncher
+      prismlauncher
       #comma
       rust-analyzer
       insomnia
