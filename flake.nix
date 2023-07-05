@@ -12,7 +12,7 @@
     outputs = { self, nixpkgs, home-manager, wallpaper-collection }@inputs: {
         nixosConfigurations.kraken = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
-            modules = [home-manager.nixosModules.default (import ./kraken/configuration.nix inputs)];
+            modules = [home-manager.nixosModules.default (import ./machines/kraken/configuration.nix inputs)];
         };
     };
 }
