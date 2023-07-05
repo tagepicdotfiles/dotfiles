@@ -21,8 +21,10 @@ in
       ./hardware-configuration.nix
       <home-manager/nixos>
     ];
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings = {
+    auto-optimise-store = true;
+    experimental-features = [ "nix-command" "flakes" ];
+  };
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -92,6 +94,9 @@ in
     nm-applet.enable = true;
     zsh.enable = true;
     hyprland.enable = true;
+    ssh = {
+        startAgent = true;
+    };
   };
   #xdg.portal.wlr.enable = true;
 
@@ -148,6 +153,7 @@ in
       nodePackages.pnpm
       gnumake
       cope
+      jetbrains.idea-community
     ];
   };
 
