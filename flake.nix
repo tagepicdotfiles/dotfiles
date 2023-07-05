@@ -14,5 +14,9 @@
             system = "x86_64-linux";
             modules = [home-manager.nixosModules.default (import ./machines/kraken/configuration.nix inputs)];
         };
+        nixosConfigurations.sylveon = nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            modules = [home-manager.nixosModules.default (import ./machines/sylveon/configuration.nix inputs)];
+        };
     };
 }
