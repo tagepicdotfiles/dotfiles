@@ -1,25 +1,13 @@
+{ self, wallpaper-collection, ...}:
 { config, pkgs, ... }:
 let
-  /* dotfiles = pkgs.fetchFromGitHub { */
-  /*   owner = "tagepicdotfiles"; */
-  /*   repo = "dotfiles"; */
-  /*   rev = "772d1f7d5018edb2a94e2c4b64ab144c3466b3ae"; */
-  /*   sha256 = "WebxDzQBE47FpC8HUyEzlQDg/FGSM9lJ/udVAsu1NVE="; */
-  /* }; */
-  dotfiles = "/home/epic/Development/dotfiles";
-  stable = import <nixos-stable> {config.allowUnfree = true;};
-  wallpaper = pkgs.fetchFromGitHub {
-    owner = "DenverCoder1";
-    repo = "minimalistic-wallpaper-collection";
-    rev = "1f5e0d1bc328600a3ab664ae3bb9b9a43b68c589";
-    sha256 = "GQfT43YWyKeWxIRy/qJKjuaJrOsxFuXrXck9NNeQjGw=";
-  } + "/images/alena-aenami-7pm.png";
+  dotfiles = self + "/config";
+  wallpaper = wallpaper-collection + "/images/daniel-ignacio-the-deer-spirit.jpg";
 in
 {
   imports =
     [
       ./hardware-configuration.nix
-      <home-manager/nixos>
     ];
   nix.settings = {
     auto-optimise-store = true;
@@ -163,9 +151,9 @@ in
       manual.manpages.enable = false;
       home = {
         file = {
-          ".config/oh-my-zsh/epic.zsh-theme".source = dotfiles + "/epic.zsh-theme";
-          ".xbindkeysrc".source = dotfiles + "/xbindkeysrc";
-          ".config/alacritty/alacritty.yml".source = dotfiles + "/alacritty.yml";
+          ".config/oh-my-zsh/epic.zsh-theme".source = dotfiles + "/zsh/epic.zsh-theme";
+          #".xbindkeysrc".source = dotfiles + "/xbindkeysrc";
+          ".config/alacritty/alacritty.yml".source = dotfiles + "/alacritty/config.yml";
 
           # Polybar
           ".config/polybar/bar.sh".source = dotfiles + "/polybar/startbar.sh";
@@ -173,8 +161,8 @@ in
           ".config/polybar/scripts/get_volume.sh".source = dotfiles + "/polybar/scripts/get_volume.sh";
 
           # Hyprland
-          ".config/hypr/hyprland.conf".source = dotfiles + "/hyprland.conf";
-          ".config/hypr/hyprpaper.conf".source = dotfiles + "/hyprpaper.conf";
+          ".config/hypr/hyprland.conf".source = dotfiles + "/hypr/hyprland.conf";
+          ".config/hypr/hyprpaper.conf".source = dotfiles + "/hypr/hyprpaper.conf";
           ".config/hypr/wallpaper.png".source = wallpaper;
 
           # Waybar
@@ -276,7 +264,6 @@ in
             pushpwd = "scp ~/.config/keepassxc/Passwords.kdbx kratos.farfrom.world:~/Passwords.kdbx";
             pullpwd = "scp kratos.farfrom.world:~/Passwords.kdbx ~/.config/keepassxc/Passwords.kdbx";
             cd = "z";
-            nix = "nix --experimental-features nix-command";
             nix-view = "nix --experimental-features nix-command edit -f '<nixpkgs>'";
             dock = "xrandr --output eDP --off";
             undock = "xrandr --output eDP --auto";
@@ -400,6 +387,7 @@ in
         preBuildPhase = "sed -i -e 's/zext_workspace_handle_v1_activate(workspace_handle_);/const std::string command = \"hyprctl dispatch workspace \" + name_;\\n\\tsystem(command.c_str());/g' src/modules/wlr/workspace_manager.cpp";
       });
       # Wayland wrappers
+      /*
       signal-desktop = super.signal-desktop.overrideAttrs (oldAttrs: rec {
         preFixup = oldAttrs.preFixup + ''
             gappsWrapperArgs+=(
@@ -408,6 +396,7 @@ in
             )
         '';
       });
+      */
     })
   ];
 
@@ -417,7 +406,7 @@ in
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
   # accidentally delete configuration.nix.
-  system.copySystemConfiguration = true;
+  #system.copySystemConfiguration = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
