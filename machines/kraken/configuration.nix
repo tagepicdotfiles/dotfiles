@@ -287,7 +287,7 @@ in
         };
         neovim = {
           enable = true;
-          extraConfig = "so " + dotfiles + "/neovim.vim";
+          extraConfig = "so " + dotfiles + "/neovim/neovim.vim";
           plugins = with pkgs.vimPlugins; [
             telescope-nvim
             nvim-lspconfig
