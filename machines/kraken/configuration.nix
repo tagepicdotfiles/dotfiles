@@ -1,10 +1,8 @@
-{ self, wallpaper-collection, nixpkgs, ...}:
+{ self, wallpaper-collection, ...}:
 { config, pkgs, ... }:
-{ config, ... }:
 let
   dotfiles = self + "/config";
   wallpaper = wallpaper-collection + "/images/daniel-ignacio-the-deer-spirit.jpg";
-  #pkgs = import nixpkgs.legacyPackages.x86_64-linux { allowUnfree = true; };
 in
 {
   imports =
@@ -32,7 +30,9 @@ in
   nixpkgs.config = {
     allowUnfree = true;
     packageOverrides = pkgs: {
-        nur = config.nur;
+        nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
+            inherit pkgs;
+        };
     };
   };
 
@@ -50,17 +50,20 @@ in
     openvpn.servers = {
         #htb = { config = '' config /etc/openvpn/htb.conf ''; };
     };
+    #picom.enable = true;
     xserver = {
       enable = true;
       layout = "no";
       libinput = {
         enable = true;
       };
+      /* windowManager.dwm.enable = true; */
       displayManager = {
         lightdm = {
           enable = true;
           background = wallpaper;
         };
+        /* startx.enable = true; */
       };
     };
 
@@ -83,7 +86,11 @@ in
         startAgent = true;
     };
   };
+  #xdg.portal.wlr.enable = true;
 
+  # Enable sound.
+  #sound.enable = true;
+  /* hardware.pulseaudio.enable = true; */
   hardware.bluetooth.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -97,6 +104,7 @@ in
     packages = with pkgs; [
       discord
       libreoffice
+      #spotify
       keepassxc
       btop
       neofetch
@@ -106,9 +114,12 @@ in
       steam
       obsidian
       alacritty
+      playerctl
       poetry
       nodePackages.pyright
+      #brightnessctl
       prusa-slicer
+      #cloc
       gh
       onefetch
       vscode
@@ -116,11 +127,15 @@ in
       thunderbird
       arandr
       xonotic
+      #thefuck
       bore-cli
+      #blender
       obs-studio
       prismlauncher
+      #comma
       rust-analyzer
       insomnia
+      #jdk17_headless # For vault hunters 1.18
       pyright
       nodejs
       nodePackages.pnpm
@@ -268,7 +283,7 @@ in
         };
         neovim = {
           enable = true;
-          extraConfig = "so " + dotfiles + "/neovim/neovim.vim";
+          extraConfig = "so " + dotfiles + "/neovim.vim";
           plugins = with pkgs.vimPlugins; [
             telescope-nvim
             nvim-lspconfig
@@ -299,6 +314,8 @@ in
     rustfmt
     gcc
     nodePackages.pyright
+    #polybar
+    #dmenu
     killall
     blueberry
     zip
@@ -307,6 +324,7 @@ in
     wofi
     hyprpaper
     waybar
+    #xdg-desktop-portal-hyprland
     wl-clipboard
     grim
     slurp
@@ -315,6 +333,13 @@ in
   ];
 
   systemd.user.services = {
+    xbindkeys = {
+      enable = false;
+      description = "Keybinds!";
+      wantedBy = ["graphical-session.target"];
+      partOf = ["graphical-session.target"];
+      serviceConfig.ExecStart = "${pkgs.xbindkeys}/bin/xbindkeys";
+    };
     blueberry = {
       enable = false;
       description = "Bluetooth applet!";
