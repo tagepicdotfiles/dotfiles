@@ -162,8 +162,12 @@ in
 
           # Hyprland
           ".config/hypr/hyprland.conf".source = dotfiles + "/hypr/hyprland.conf";
-          ".config/hypr/hyprpaper.conf".source = dotfiles + "/hypr/hyprpaper.conf";
-          ".config/hypr/wallpaper.png".source = wallpaper;
+          ".config/hypr/hyprpaper.conf".text = ''
+          preload = ${wallpaper}
+          wallpaper = ,${wallpaper}
+          '';
+          #".config/hypr/hyprpaper.conf".source = dotfiles + "/hypr/hyprpaper.conf";
+          #".config/hypr/wallpaper.jpg".source = wallpaper;
 
           # Waybar
           ".config/waybar/config".source = dotfiles + "/waybar/config.json";
