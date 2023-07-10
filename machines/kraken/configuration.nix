@@ -3,6 +3,7 @@
 let
   dotfiles = self + "/config";
   wallpaper = wallpaper-collection + "/images/daniel-ignacio-the-deer-spirit.jpg";
+  animated-wallpaper = self + "/config/backgrounds/dots.mp4";
 in
 {
   imports =
@@ -168,6 +169,7 @@ in
           '';
           #".config/hypr/hyprpaper.conf".source = dotfiles + "/hypr/hyprpaper.conf";
           #".config/hypr/wallpaper.jpg".source = wallpaper;
+          ".config/hypr/animated-wallpaper.mp4".source = animated-wallpaper;
 
           # Waybar
           ".config/waybar/config".source = dotfiles + "/waybar/config.json";
@@ -334,6 +336,7 @@ in
     slurp
     wireguard-tools
     dig
+    mpvpaper
   ];
 
   systemd.user.services = {
