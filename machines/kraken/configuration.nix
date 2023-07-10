@@ -1,4 +1,4 @@
-{ self, wallpaper-collection, ...}:
+{ self, wallpaper-collection, hyprsome, ...}:
 { config, pkgs, ... }:
 let
   dotfiles = self + "/config";
@@ -337,6 +337,7 @@ in
     wireguard-tools
     dig
     mpvpaper
+    hyprsome.packages.x86_64-linux.default
   ];
 
   systemd.user.services = {
