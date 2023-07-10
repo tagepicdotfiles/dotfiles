@@ -1,9 +1,10 @@
-{ self, wallpaper-collection, hyprsome, ...}:
+{ self, wallpaper-collection, hyprsome, btop-gpu, ...}:
 { config, pkgs, ... }:
 let
   dotfiles = self + "/config";
   wallpaper = wallpaper-collection + "/images/daniel-ignacio-the-deer-spirit.jpg";
   animated-wallpaper = self + "/config/backgrounds/dots.mp4";
+  system = "x86_64-linux";
 in
 {
   imports =
@@ -107,7 +108,8 @@ in
       libreoffice
       #spotify
       keepassxc
-      btop
+      #btop
+      btop-gpu.packages.${system}.default
       neofetch
       pfetch
       zoxide
@@ -337,7 +339,7 @@ in
     wireguard-tools
     dig
     mpvpaper
-    hyprsome.packages.x86_64-linux.default
+    hyprsome.packages.${system}.default
   ];
 
   systemd.user.services = {
