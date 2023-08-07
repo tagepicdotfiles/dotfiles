@@ -46,6 +46,8 @@ in
   console.keyMap = "no";
 
   virtualisation.docker.enable = true;
+  
+  security.sudo.package = pkgs.sudo.override { withInsults = true; };
 
   services = {
     # WM
