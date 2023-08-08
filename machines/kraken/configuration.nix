@@ -199,8 +199,29 @@ in
             
             profiles.main = {
                 isDefault = true;
-                search.default = "DuckDuckGo";
-                search.force = true;
+                search = {
+                    default = "Ecosia";
+                    force = true;
+                    engines = {
+                        "Ecosia" = {
+                            urls = [
+                                {
+                                    template = "https://www.ecosia.org/search";
+                                    params = [
+                                        {
+                                            name = "method";
+                                            value = "index";
+                                        }
+                                        {
+                                            name = "q";
+                                            value = "{searchTerms}";
+                                        }
+                                    ];
+                                }
+                            ];
+                        };
+                    };
+                };
                 settings = {
                     # Disable swipe navigation
                     "browser.gesture.swipe.left" = "";
