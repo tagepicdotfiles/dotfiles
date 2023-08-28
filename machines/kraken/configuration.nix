@@ -139,6 +139,7 @@ in
       prismlauncher
       #comma
       rust-analyzer
+      clippy
       insomnia
       #jdk17_headless # For vault hunters 1.18
       pyright
