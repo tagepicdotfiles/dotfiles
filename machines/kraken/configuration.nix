@@ -89,6 +89,7 @@ in
     ssh = {
         startAgent = true;
     };
+    noisetorch.enable = true;
   };
   #xdg.portal.wlr.enable = true;
 
