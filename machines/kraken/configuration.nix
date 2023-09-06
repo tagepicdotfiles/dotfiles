@@ -149,6 +149,7 @@ in
       gnumake
       cope
       jetbrains.idea-community
+      gdb
     ];
   };
 
