@@ -54,20 +54,17 @@ in
     openvpn.servers = {
         #htb = { config = '' config /etc/openvpn/htb.conf ''; };
     };
-    #picom.enable = true;
     xserver = {
       enable = true;
       layout = "no";
       libinput = {
         enable = true;
       };
-      /* windowManager.dwm.enable = true; */
       displayManager = {
         lightdm = {
           enable = true;
           background = wallpaper;
         };
-        /* startx.enable = true; */
       };
     };
 
