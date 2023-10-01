@@ -147,6 +147,8 @@ in
       cope
       jetbrains.idea-community
       gdb
+      jq
+      jless
     ];
   };
 
