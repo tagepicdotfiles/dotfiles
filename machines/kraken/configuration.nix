@@ -149,6 +149,7 @@ in
       gdb
       jq
       jless
+      helvum
     ];
   };
 
