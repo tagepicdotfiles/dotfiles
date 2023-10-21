@@ -150,6 +150,7 @@ in
       jq
       jless
       helvum
+      easyeffects
     ];
   };
 
