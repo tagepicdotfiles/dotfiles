@@ -26,7 +26,7 @@ in
   networking.networkmanager.enable = true;
 
   # Firewall
-  networking.firewall.allowedTCPPorts = [];
+  networking.firewall.allowedTCPPorts = [5173];
   networking.firewall.allowedUDPPorts = [];
 
   nixpkgs.config = {
@@ -36,6 +36,9 @@ in
             inherit pkgs;
         };
     };
+    permittedInsecurePackages = [
+        "electron-24.8.6"
+    ];
   };
 
   # Set your time zone.
