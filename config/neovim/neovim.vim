@@ -93,7 +93,7 @@ cmp.setup({
 })
 
 -- nvim-lspconfig
-local servers = {"pyright", "rust_analyzer", "dartls"}
+local servers = {"pyright", "rust_analyzer", "dartls", "tsserver"}
 local lspconfig = require"lspconfig"
 for _, server in pairs(servers) do
     lspconfig[server].setup{

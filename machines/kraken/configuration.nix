@@ -154,6 +154,7 @@ in
       jless
       helvum
       easyeffects
+      nodePackages.typescript-language-server
     ];
   };
 
