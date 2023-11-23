@@ -155,6 +155,7 @@ in
       helvum
       easyeffects
       nodePackages.typescript-language-server
+      nodePackages.svelte-language-server
     ];
   };
 
