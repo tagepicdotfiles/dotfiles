@@ -44,6 +44,7 @@
             extraGroups = [ "networkmanager" "wheel" "disk" "cdrom" "plugdev" "input"];
             packages = with pkgs; [
                 waypipe
+                hyprland
                 steam
             ];
         };

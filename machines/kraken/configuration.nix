@@ -158,6 +158,7 @@ in
       easyeffects
       nodePackages.typescript-language-server
       nodePackages.svelte-language-server
+      waypipe
     ];
   };
 
