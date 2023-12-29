@@ -395,7 +395,7 @@ in
   };
 
   # Fonts
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     font-awesome_6
   ];
 
