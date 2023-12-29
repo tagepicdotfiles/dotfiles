@@ -1,4 +1,4 @@
-{ self, wallpaper-collection, hyprsome, btop-gpu, ...}:
+{ self, wallpaper-collection, hyprsome, ...}:
 { config, pkgs, ... }:
 let
   dotfiles = self + "/config";
@@ -38,6 +38,7 @@ in
     };
     permittedInsecurePackages = [
         "electron-24.8.6"
+        "electron-25.9.0"
     ];
   };
 
@@ -107,12 +108,13 @@ in
     isNormalUser = true;
     extraGroups = [ "wheel" "wireshark" "docker" "tty" "dialout" ];
     packages = with pkgs; [
-      discord
+      #discord
+      vesktop
       libreoffice
       #spotify
       keepassxc
-      #btop
-      btop-gpu.packages.${system}.default
+      btop
+      #btop-gpu.packages.${system}.default
       neofetch
       pfetch
       zoxide

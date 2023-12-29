@@ -1,28 +1,5 @@
 {
   "nodes": {
-    "btop-gpu": {
-      "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs-unstable"
-        ]
-      },
-      "locked": {
-        "lastModified": 1689029621,
-        "narHash": "sha256-LyMf5/LXMKUCgT1vRnG0CO0nHljlk/RD7RQYiWUg4W8=",
-        "owner": "tag-epic",
-        "repo": "btop-gpu-flake",
-        "rev": "2759b88bf4ee7dc03d07023d2e27fbb0cb4145b1",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tag-epic",
-        "repo": "btop-gpu-flake",
-        "type": "github"
-      }
-    },
     "crane": {
       "inputs": {
         "nixpkgs": [
@@ -30,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1702488130,
-        "narHash": "sha256-Bz4KTuBARAQY8952CpmYVD9o/LoScYjdw8KrK2OjEoA=",
+        "lastModified": 1703439018,
+        "narHash": "sha256-VT+06ft/x3eMZ1MJxWzQP3zXFGcrxGo5VR2rB7t88hs=",
         "owner": "ipetkov",
         "repo": "crane",
-        "rev": "33dbb6a8342e1cf6252c8976d02ff8a7632aa071",
+        "rev": "afdcd41180e3dfe4dac46b5ee396e3b12ccc967a",
         "type": "github"
       },
       "original": {
@@ -126,27 +103,27 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1702221085,
-        "narHash": "sha256-Br3GCSkkvkmw46cT6wCz6ro2H1WgDMWbKE0qctbdtL0=",
+        "lastModified": 1703200384,
+        "narHash": "sha256-q5j06XOsy0qHOarsYPfZYJPWbTbc8sryRxianlEPJN0=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "c2786e7084cbad90b4f9472d5b5e35ecb57958af",
+        "rev": "0b3d618173114c64ab666f557504d6982665d328",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixos-23.05",
+        "ref": "nixos-23.11",
         "repo": "nixpkgs",
         "type": "github"
       }
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1702272962,
-        "narHash": "sha256-D+zHwkwPc6oYQ4G3A1HuadopqRwUY/JkMwHz1YF7j4Q=",
+        "lastModified": 1703499205,
+        "narHash": "sha256-lF9rK5mSUfIZJgZxC3ge40tp1gmyyOXZ+lRY3P8bfbg=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "e97b3e4186bcadf0ef1b6be22b8558eab1cdeb5d",
+        "rev": "e1fa12d4f6c6fe19ccb59cac54b5b3f25e160870",
         "type": "github"
       },
       "original": {
@@ -158,7 +135,6 @@
     },
     "root": {
       "inputs": {
-        "btop-gpu": "btop-gpu",
         "crane": "crane",
         "flake-compat": "flake-compat",
         "flake-utils": "flake-utils",
@@ -180,11 +156,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1702433821,
-        "narHash": "sha256-Kxv+dRbzj1fLQG0fyF/H6nswda6cN48r6kjctysnY4o=",
+        "lastModified": 1703470538,
+        "narHash": "sha256-NVFMSr99F0TIqVWBwDqMH6lWoM4PVyzMtI+CPGRIscg=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "cb9016d3a569100a609bb92c0a45beb9e23cd4eb",
+        "rev": "f2b937756343365f9b1ba66ec7a1ca489aef745c",
         "type": "github"
       },
       "original": {
@@ -211,11 +187,11 @@
     "wallpaper-collection": {
       "flake": false,
       "locked": {
-        "lastModified": 1693269231,
-        "narHash": "sha256-cyB9yoHOpJ1FBTSqqZEO5b3ubv2P4nYmM1gLaexqPzU=",
+        "lastModified": 1703614833,
+        "narHash": "sha256-xVaaydpJel8eZXI2H5A/8PiGX2eJYIdO5BZ9U+MU2sE=",
         "owner": "DenverCoder1",
         "repo": "minimalistic-wallpaper-collection",
-        "rev": "816af8d93842994b434d2e1f6aa63b8e96bc7c63",
+        "rev": "bd93f7ad692cc25578c1249f404e0efaf38a1f51",
         "type": "github"
       },
       "original": {

@@ -1,7 +1,7 @@
 {
     description = "dotfiles";
     inputs = {
-        nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
+        nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
         nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
         flake-utils.url = "github:numtide/flake-utils";
         flake-compat = {
@@ -42,15 +42,6 @@
                 nixpkgs.follows = "nixpkgs";
                 flake-utils.follows = "flake-utils";
                 crane.follows = "crane";
-            };
-        };
-        btop-gpu = {
-            url = "github:tag-epic/btop-gpu-flake";
-            inputs = {
-                # TODO: Uncomment once the stable version of "fmt" is 10.0.0
-                #nixpkgs.follows = "nixpkgs";
-                flake-utils.follows = "flake-utils";
-                nixpkgs.follows = "nixpkgs-unstable";
             };
         };
     };
