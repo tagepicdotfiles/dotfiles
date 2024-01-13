@@ -4,10 +4,6 @@ let
     module_path = "${inputs.self}/modules/overrides/hyprland-remote-host";
     wallpaper = "${inputs.wallpaper-collection}/images/dataxiii-upscaled-vector-landscape.jpg";
 in {
-    programs = {
-        hyprland.enable = true;
-    };
-
     home-manager.users.${username} = {
         home.file = {
             # Hyprland
@@ -20,5 +16,6 @@ in {
     };
     environment.systemPackages = with pkgs; [
         hyprpaper
+        hyprland
     ];
 }
