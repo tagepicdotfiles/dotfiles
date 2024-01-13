@@ -91,6 +91,7 @@
                     (import ./modules/programs/docker.nix moduleParams)
                     (import ./modules/programs/git.nix moduleParams)
                     (import ./modules/programs/nix.nix moduleParams)
+                    (import ./modules/programs/waypipe.nix moduleParams)
 
                     # Languages
                     (import ./modules/programs/rust.nix moduleParams)
