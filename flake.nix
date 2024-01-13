@@ -1,8 +1,7 @@
-{
+{ 
     description = "dotfiles";
     inputs = {
-        nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
-        nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+        # Libraries
         flake-utils.url = "github:numtide/flake-utils";
         flake-compat = {
             url = "github:edolstra/flake-compat";
@@ -18,14 +17,13 @@
         crane = {
             url = "github:ipetkov/crane";
             inputs = {
-                flake-utils.follows = "flake-utils";
-                flake-compat.follows = "flake-compat";
                 nixpkgs.follows = "nixpkgs";
-                rust-overlay.follows = "rust-overlay";
             };
         };
 
-
+        # Apps
+        nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+        nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
         home-manager = {
             url = "github:nix-community/home-manager/release-23.05";
             inputs = {
@@ -45,15 +43,60 @@
             };
         };
     };
-
     outputs = { nixpkgs, home-manager, ... }@inputs: {
-        nixosConfigurations.kraken = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            modules = [home-manager.nixosModules.default (import ./machines/kraken/configuration.nix inputs)];
-        };
-        nixosConfigurations.sylveon = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            modules = [home-manager.nixosModules.default (import ./machines/sylveon/configuration.nix inputs)];
+        nixosConfigurations = {
+            kraken = nixpkgs.lib.nixosSystem {
+                system = "x86_64-linux";
+                modules = let
+                    moduleParams = {
+                        username = "epic";
+                        hostname = "kraken";
+                        system = "x86_64-linux";
+                        inherit inputs;
+                    };
+                in [
+                    # Dependencies
+                    home-manager.nixosModules.default
+
+                    # Overrides
+                    (import ./modules/overrides/hardware/kraken.nix inputs) 
+                    
+                    # Base modules
+                    (import ./modules/base.nix moduleParams)
+                    (import ./modules/home-manager.nix moduleParams)
+                    (import ./modules/locale/nb-no.nix moduleParams)
+
+                    # Hardware modules
+                    (import ./modules/hardware/bootloader.nix moduleParams)
+                    (import ./modules/hardware/bluetooth.nix moduleParams)
+                    (import ./modules/hardware/networking.nix moduleParams)
+                    (import ./modules/hardware/audio.nix moduleParams)
+
+                    # Desktop modules
+                    (import ./modules/programs/hyprland/module.nix moduleParams)
+                    (import ./modules/programs/lightdm.nix moduleParams)
+
+
+                    # Program modules
+                    (import ./modules/programs/firefox.nix moduleParams)
+                    (import ./modules/programs/discord.nix moduleParams)
+                    (import ./modules/programs/signal.nix moduleParams)
+                    (import ./modules/programs/alacritty/module.nix moduleParams)
+
+                    # CLI modules
+                    (import ./modules/programs/cli-tools.nix moduleParams)
+                    (import ./modules/programs/zoxide.nix moduleParams)
+                    (import ./modules/programs/zsh/module.nix moduleParams)
+                    (import ./modules/programs/neovim/module.nix moduleParams)
+                    (import ./modules/programs/docker.nix moduleParams)
+                    (import ./modules/programs/git.nix moduleParams)
+                    (import ./modules/programs/nix.nix moduleParams)
+
+                    # Languages
+                    (import ./modules/programs/rust.nix moduleParams)
+                    (import ./modules/programs/c.nix moduleParams)
+                ];
+            };
         };
     };
 }
