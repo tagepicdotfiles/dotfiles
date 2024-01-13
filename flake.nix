@@ -97,6 +97,50 @@
                     (import ./modules/programs/c.nix moduleParams)
                 ];
             };
+            sylveon = nixpkgs.lib.nixosSystem {
+                system = "x86_64-linux";
+                modules = let
+                    moduleParams = {
+                        username = "epic";
+                        hostname = "sylveon";
+                        system = "x86_64-linux";
+                        inherit inputs;
+                    };
+                in [
+                    # Dependencies
+                    home-manager.nixosModules.default
+
+                    # Overrides
+                    (import ./modules/overrides/hardware/sylveon.nix inputs) 
+                    
+                    # Base modules
+                    (import ./modules/base.nix moduleParams)
+                    (import ./modules/home-manager.nix moduleParams)
+                    (import ./modules/locale/nb-no.nix moduleParams)
+
+                    # Service modules
+                    (import ./modules/ssh-server.nix moduleParams)
+                    (import ./modules/overrides/hyprland-remote-host/module.nix moduleParams)
+
+                    # Hardware modules
+                    (import ./modules/hardware/bootloader.nix moduleParams)
+                    (import ./modules/hardware/networking.nix moduleParams)
+                    (import ./modules/hardware/audio.nix moduleParams)
+
+                    # Program modules
+                    (import ./modules/programs/alacritty/module.nix moduleParams)
+                    (import ./modules/programs/steam.nix moduleParams)
+
+                    # CLI modules
+                    (import ./modules/programs/cli-tools.nix moduleParams)
+                    (import ./modules/programs/zoxide.nix moduleParams)
+                    (import ./modules/programs/zsh/module.nix moduleParams)
+                    (import ./modules/programs/neovim/module.nix moduleParams)
+                    (import ./modules/programs/docker.nix moduleParams)
+                    (import ./modules/programs/git.nix moduleParams)
+                    (import ./modules/programs/nix.nix moduleParams)
+                ];
+            };
         };
     };
 }
