@@ -113,6 +113,8 @@
 
                     # Overrides
                     (import ./modules/overrides/hardware/sylveon.nix inputs) 
+                    (import ./modules/overrides/sylveon-wrong-bootloader-path.nix moduleParams) 
+                    (import ./modules/overrides/hyprland-remote-host/module.nix moduleParams)
                     
                     # Base modules
                     (import ./modules/base.nix moduleParams)
@@ -121,7 +123,6 @@
 
                     # Service modules
                     (import ./modules/ssh-server.nix moduleParams)
-                    (import ./modules/overrides/hyprland-remote-host/module.nix moduleParams)
 
                     # Hardware modules
                     (import ./modules/hardware/bootloader.nix moduleParams)
