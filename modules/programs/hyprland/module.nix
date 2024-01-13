@@ -1,7 +1,7 @@
 {username, inputs, system, ...}:
 {pkgs, ...}:
 let
-    module_path = "${inputs.self}/modules/hyprland";
+    module_path = "${inputs.self}/modules/programs/hyprland";
     wallpaper = "${inputs.wallpaper-collection}/images/dataxiii-upscaled-vector-landscape.jpg";
 in {
     programs = {
@@ -16,7 +16,7 @@ in {
             ".config/waybar/style.css".source = "${module_path}/waybar/style.css";
 
             # Hyprland
-            ".config/hypr/hyprland.conf".source = "${module_path}/hyprland.conf";
+            ".config/hypr/hyprland.conf".text = builtins.replaceStrings ["hyprsome"] ["${inputs.hyprsome.packages.${system}.default}/bin/hyprsome"](builtins.readFile "${module_path}/hyprland.conf");
             ".config/hypr/hyprpaper.conf".text = ''
             preload = ${wallpaper}
             wallpaper = ,${wallpaper}
