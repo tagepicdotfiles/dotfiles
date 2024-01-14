@@ -31,6 +31,9 @@ in {
         grim
         slurp
         wl-clipboard
+
+        # Open window
+        wofi
     ];
 
     # Waybar font
