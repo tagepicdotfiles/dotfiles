@@ -92,6 +92,7 @@
                     (import ./modules/programs/git.nix moduleParams)
                     (import ./modules/programs/nix.nix moduleParams)
                     (import ./modules/programs/waypipe.nix moduleParams)
+                    (import ./modules/programs/sudo.nix moduleParams)
 
                     # Languages
                     (import ./modules/programs/rust.nix moduleParams)
@@ -142,6 +143,7 @@
                     (import ./modules/programs/git.nix moduleParams)
                     (import ./modules/programs/nix.nix moduleParams)
                     (import ./modules/programs/waypipe.nix moduleParams)
+                    (import ./modules/programs/sudo.nix moduleParams)
                 ];
             };
             nidoran = nixpkgs.lib.nixosSystem {
