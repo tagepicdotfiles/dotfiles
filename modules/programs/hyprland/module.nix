@@ -26,6 +26,11 @@ in {
     environment.systemPackages = with pkgs; [
         inputs.hyprsome.packages.${system}.default
         hyprpaper
+
+        # Screenshot
+        grim
+        slurp
+        wl-clipboard
     ];
 
     # Waybar font
