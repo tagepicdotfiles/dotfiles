@@ -17,5 +17,8 @@ in {
     environment.systemPackages = with pkgs; [
         hyprpaper
         hyprland
+        
+        # Open window
+        wofi
     ];
 }
