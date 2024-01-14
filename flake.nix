@@ -182,6 +182,7 @@
                     (import ./modules/programs/docker.nix moduleParams)
                     (import ./modules/programs/git.nix moduleParams)
                     (import ./modules/programs/nix.nix moduleParams)
+                    (import ./modules/programs/sudo.nix moduleParams)
                 ];
             };
         };
