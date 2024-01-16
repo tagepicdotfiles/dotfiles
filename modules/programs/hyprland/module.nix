@@ -40,4 +40,7 @@ in {
     fonts.packages = with pkgs; [
         font-awesome_6
     ];
+
+    # Input on X11 apps
+    services.xserver.libinput.enable = true;
 }

@@ -129,6 +129,7 @@
                     (import ./modules/hardware/bootloader/systemd-boot.nix moduleParams)
                     (import ./modules/hardware/networking.nix moduleParams)
                     (import ./modules/hardware/audio.nix moduleParams)
+                    (import ./modules/hardware/graphics.nix moduleParams)
 
                     # Program modules
                     (import ./modules/programs/alacritty/module.nix moduleParams)

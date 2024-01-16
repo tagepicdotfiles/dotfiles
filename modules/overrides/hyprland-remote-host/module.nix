@@ -21,4 +21,7 @@ in {
         # Open window
         wofi
     ];
+    
+    # Input on X11 apps
+    services.xserver.libinput.enable = true;
 }
