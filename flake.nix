@@ -59,7 +59,7 @@
                     home-manager.nixosModules.default
 
                     # Overrides
-                    (import ./modules/overrides/hardware/kraken.nix inputs) 
+                    (import ./overrides/kraken/hardware.nix inputs) 
                     
                     # Base modules
                     (import ./modules/base.nix moduleParams)
@@ -113,9 +113,9 @@
                     home-manager.nixosModules.default
 
                     # Overrides
-                    (import ./modules/overrides/hardware/sylveon.nix inputs) 
-                    (import ./modules/overrides/sylveon-wrong-bootloader-path.nix moduleParams) 
-                    (import ./modules/overrides/hyprland-remote-host/module.nix moduleParams)
+                    (import ./overrides/sylveon/hardware.nix inputs) 
+                    (import ./overrides/sylveon/wrong-bootloader-path.nix moduleParams) 
+                    (import ./overrides/sylveon/hyprland-remote-host/module.nix moduleParams)
                     
                     # Base modules
                     (import ./modules/base.nix moduleParams)
@@ -161,7 +161,8 @@
                     home-manager.nixosModules.default
 
                     # Overrides
-                    (import ./modules/overrides/hardware/nidoran.nix inputs) 
+                    (import ./overrides/nidoran/hardware.nix inputs)
+                    (import ./overrides/nidoran/caddy.nix inputs)
                     
                     # Base modules
                     (import ./modules/base.nix moduleParams)
