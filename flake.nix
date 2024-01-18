@@ -65,6 +65,7 @@
                     (import ./modules/base.nix moduleParams)
                     (import ./modules/home-manager.nix moduleParams)
                     (import ./modules/locale/nb-no.nix moduleParams)
+                    (import ./modules/nix-ld.nix moduleParams)
 
                     # Hardware modules
                     (import ./modules/hardware/bootloader/systemd-boot.nix moduleParams)
