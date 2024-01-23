@@ -96,8 +96,9 @@
                     (import ./modules/programs/sudo.nix moduleParams)
 
                     # Languages
-                    (import ./modules/programs/rust.nix moduleParams)
-                    (import ./modules/programs/c.nix moduleParams)
+                    (import ./modules/languages/rust.nix moduleParams)
+                    (import ./modules/languages/c.nix moduleParams)
+                    (import ./modules/languages/python.nix moduleParams)
                 ];
             };
             sylveon = nixpkgs.lib.nixosSystem {
