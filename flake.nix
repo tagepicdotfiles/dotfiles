@@ -83,6 +83,7 @@
                     (import ./modules/programs/discord.nix moduleParams)
                     (import ./modules/programs/signal.nix moduleParams)
                     (import ./modules/programs/alacritty/module.nix moduleParams)
+                    (import ./modules/programs/steam.nix moduleParams)
 
                     # CLI modules
                     (import ./modules/programs/cli-tools.nix moduleParams)
