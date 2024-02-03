@@ -72,6 +72,7 @@
                     (import ./modules/hardware/bluetooth.nix moduleParams)
                     (import ./modules/hardware/networking.nix moduleParams)
                     (import ./modules/hardware/audio.nix moduleParams)
+                    (import ./modules/hardware/printing.nix moduleParams)
 
                     # Desktop modules
                     (import ./modules/programs/hyprland/module.nix moduleParams)
@@ -119,6 +120,7 @@
                     (import ./overrides/sylveon/hardware.nix inputs) 
                     (import ./overrides/sylveon/wrong-bootloader-path.nix moduleParams) 
                     (import ./overrides/sylveon/hyprland-remote-host/module.nix moduleParams)
+                    (import ./overrides/sylveon/printing-server.nix moduleParams)
                     
                     # Base modules
                     (import ./modules/base.nix moduleParams)
@@ -133,6 +135,7 @@
                     (import ./modules/hardware/networking.nix moduleParams)
                     (import ./modules/hardware/audio.nix moduleParams)
                     (import ./modules/hardware/graphics.nix moduleParams)
+                    (import ./modules/hardware/printing.nix moduleParams)
 
                     # Program modules
                     (import ./modules/programs/alacritty/module.nix moduleParams)
