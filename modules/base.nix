@@ -5,4 +5,7 @@
 
     # User
     users.users.${username}.isNormalUser = true;
+
+    # We can't avoid it
+    nixpkgs.config.allowUnfree = true;
 }
