@@ -1,7 +1,7 @@
 {username, inputs, system, ...}:
 {pkgs, ...}:
 let
-    module_path = "${inputs.self}/modules/overrides/hyprland-remote-host";
+    module_path = "${inputs.self}/overrides/sylveon/hyprland-remote-host";
     wallpaper = "${inputs.wallpaper-collection}/images/dataxiii-upscaled-vector-landscape.jpg";
 in {
     home-manager.users.${username} = {
