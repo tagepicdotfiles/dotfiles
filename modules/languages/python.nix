@@ -12,7 +12,7 @@
         python311Packages.pip
 
         # 3.12
-        #python312
+        python312
         #python312Packages.pip
 
         # 3.13
