@@ -4,13 +4,14 @@
 in {
     services.prometheus = {
         enable = true;
+        port = ports.utils.prometheus;
 
         scrapeConfigs = [
             {
                 job_name = "vail-scraper";
                 static_configs = [
                     {
-                        targets = ["http://localhost:${toString ports.vailScraper.scraper}"];
+                        targets = ["localhost:${toString ports.vailScraper.scraper}"];
                     }
                 ];
             }
@@ -18,6 +19,10 @@ in {
     };
     services.grafana = {
         enable = true;
-        settings = {};
+        settings = {
+            server = {
+                http_port = ports.utils.grafana;
+            };
+        };
     };
 }

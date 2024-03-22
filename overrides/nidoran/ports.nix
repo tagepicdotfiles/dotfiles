@@ -4,7 +4,7 @@
         https = 443;
     };
     utils = {
-        victoriaLogs = 10000;
+        prometheus = 10000;
         grafana = 10001;
     };
     vailScraper = {
