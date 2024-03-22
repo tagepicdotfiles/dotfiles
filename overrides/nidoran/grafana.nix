@@ -5,7 +5,7 @@ in {
     services.victoriametrics = {
         enable = true;
         retentionPeriod = "1y";
-        listenAddress = ":${ports.utils.prometheus}";
+        listenAddress = ":${toString ports.utils.prometheus}";
         extraOptions = ["-promscrape.config=/etc/victoriametrics-scrape.yaml"];
     };
     environment.etc = {
