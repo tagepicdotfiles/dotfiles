@@ -42,7 +42,7 @@ in {
               - targets: [
                 "localhost:${toString ports.vailScraper.scraper}" # filserver
               ]
-        ''
+        '';
     };
     services.grafana = {
         enable = true;
