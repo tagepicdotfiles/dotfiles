@@ -8,6 +8,6 @@
         grafana = 10001;
     };
     vailScraper = {
-        scraper = 10001;
+        scraper = 10002;
     };
 }
