@@ -8,6 +8,9 @@ in {
         virtualHosts."vail-scraper.farfrom.world".extraConfig = ''
             reverse_proxy http://localhost:${toString ports.vailScraper.scraper}
         '';
+        virtualHosts."grafana.farfrom.world".extraConfig = ''
+            reverse_proxy http://localhost:${toString ports.utils.grafana}
+        '';
     };
     networking.firewall.allowedTCPPorts = [
         80
