@@ -9,7 +9,7 @@ in {
         extraOptions = ["-promscrape.config=/etc/victoriametrics-scrape.yaml"];
     };
     environment.etc = {
-        "victoriametrics-scrape.yaml" = ''
+        "victoriametrics-scrape.yaml".text = ''
         # Sample config for Prometheus.
         global:
           scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
