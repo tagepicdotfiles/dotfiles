@@ -6,7 +6,7 @@ in {
         enable = true;
         retentionPeriod = 12; # 1 year
         listenAddress = ":${toString ports.utils.prometheus}";
-        extraOptions = ["-promscrape.config=/etc/victoriametrics-scrape.yaml"];
+        extraOptions = ["-promscrape.config=/etc/victoriametrics-scrape.yaml" "-promscrape.maxScrapeSize 10737418240"];
     };
     environment.etc = {
         "victoriametrics-scrape.yaml".text = ''
