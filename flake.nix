@@ -169,6 +169,7 @@
                     # Overrides
                     (import ./overrides/nidoran/hardware.nix inputs)
                     (import ./overrides/nidoran/caddy.nix inputs)
+                    (import ./overrides/nidoran/grafana.nix inputs)
                     
                     # Base modules
                     (import ./modules/base.nix moduleParams)

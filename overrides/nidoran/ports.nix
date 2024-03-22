@@ -1,6 +1,13 @@
 {
-    data-robbery = {
-        http = 10000;
-        postgres = 10000;
+    caddy = {
+        http = 80;
+        https = 443;
+    };
+    utils = {
+        victoriaLogs = 10000;
+        grafana = 10001;
+    };
+    vailScraper = {
+        scraper = 10001;
     };
 }
