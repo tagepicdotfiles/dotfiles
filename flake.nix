@@ -85,6 +85,7 @@
                     (import ./modules/programs/signal.nix moduleParams)
                     (import ./modules/programs/alacritty/module.nix moduleParams)
                     (import ./modules/programs/steam.nix moduleParams)
+                    (import ./modules/programs/office.nix moduleParams)
 
                     # CLI modules
                     (import ./modules/programs/cli-tools.nix moduleParams)
