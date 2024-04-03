@@ -19,7 +19,7 @@
         enable = true;
     };
     services.ipp-usb.enable = true;
-    users.users.${username}.extraGroups = ["scanner" "lp"];
+    users.users.${username}.extraGroups = ["scanner" "lp" "usb"];
 
 
 
