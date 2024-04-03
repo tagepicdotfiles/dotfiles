@@ -1,5 +1,6 @@
-{...}:
+{username, ...}:
 {pkgs, lib, ...}: {
+    # Printing 
     services.printing = {
         openFirewall = true;
         listenAddresses = ["0.0.0.0:631"];
@@ -12,6 +13,15 @@
         browsing = true;
         defaultShared = true;
     };
+
+    # Scanning
+    hardware.sane = {
+        enable = true;
+    };
+    services.ipp-usb.enable = true;
+    users.users.${username}.extraGroups = ["scanner" "lp"];
+
+
 
     # Publishing
     services.avahi = {
