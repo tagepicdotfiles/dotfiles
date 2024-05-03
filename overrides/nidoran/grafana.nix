@@ -36,7 +36,8 @@ in {
         scrape_configs:
           # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
           - job_name: 'vail-scraper'
-            scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+            scrape_interval:     5m # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+            scrape_timeout:      4m59s
 
             static_configs:
               - targets: [
