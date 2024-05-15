@@ -9,5 +9,7 @@
     };
     vailScraper = {
         scraper = 10002;
+        questdb-web = 10003;
+        ui = 10004;
     };
 }
