@@ -18,10 +18,14 @@ in {
     networking.firewall.allowedTCPPorts = [
         80
         443
+
+        ${ports.utils.debugging}
     ];
     networking.firewall.allowedUDPPorts = [
         80
         443
+
+        ${ports.utils.debugging}
     ];
 
 }
