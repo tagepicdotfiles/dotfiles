@@ -11,6 +11,8 @@
     vailScraper = {
         scraper = 10002;
         questdb-web = 10003;
+        questdb-postgres = 10005;
         ui = 10004;
+        meilisearch = 10006;
     };
 }
