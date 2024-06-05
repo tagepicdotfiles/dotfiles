@@ -60,6 +60,7 @@
 
                     # Overrides
                     (import ./overrides/kraken/hardware.nix inputs) 
+                    (import ./overrides/kraken/debug-ports.nix inputs) 
                     
                     # Base modules
                     (import ./modules/base.nix moduleParams)
