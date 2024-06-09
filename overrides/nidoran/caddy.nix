@@ -8,6 +8,9 @@ in {
         virtualHosts."vail-scraper.farfrom.world".extraConfig = ''
             reverse_proxy http://localhost:${toString ports.vailScraper.scraper}
         '';
+        virtualHosts."vail-api.farfrom.world".extraConfig = ''
+            reverse_proxy http://localhost:${toString ports.vailScraper.scraper}
+        '';
         virtualHosts."vail.farfrom.world".extraConfig = ''
             reverse_proxy http://localhost:${toString ports.vailScraper.ui}
         '';
