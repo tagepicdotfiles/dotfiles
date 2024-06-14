@@ -3,8 +3,9 @@
 {
     networking.firewall.allowedTCPPorts = [
         5173 # Svelte apps - for debugging
-        8972 # HTB
-        8971 # HTB revshell
+        9999 # Generic debug port
     ];
-    networking.firewall.allowedUDPPorts = [];
+    networking.firewall.allowedUDPPorts = [
+        9999 # Generic debug port
+    ];
 }
