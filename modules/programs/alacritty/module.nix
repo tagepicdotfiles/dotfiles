@@ -6,7 +6,7 @@ in
 {
     home-manager.users.${username} = {
         home.file = {
-            ".config/alacritty/alacritty.yml".source = "${module_path}/config.yml";
+            ".config/alacritty/alacritty.toml".source = "${module_path}/config.toml";
         };
     };
     users.users.${username}.packages = with pkgs; [
