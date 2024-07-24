@@ -16,4 +16,7 @@
         ui = 10004;
         meilisearch = 10006;
     };
+    blog = {
+        blog = 10008;
+    };
 }

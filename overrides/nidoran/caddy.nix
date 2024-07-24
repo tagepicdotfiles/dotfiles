@@ -18,7 +18,10 @@ in {
             reverse_proxy http://localhost:${toString ports.utils.grafana}
         '';
         virtualHosts."plausible.farfrom.world".extraConfig = ''
-            reverse_proxy http://localhost:10007
+            reverse_proxy http://localhost:${toString ports.utils.plausible}
+        '';
+        virtualHosts."blog.farfrom.world".extraConfig = ''
+            reverse_proxy http://localhost:${toString ports.blog.blog}
         '';
     };
     networking.firewall.allowedTCPPorts = [
