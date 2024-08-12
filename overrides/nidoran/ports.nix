@@ -15,6 +15,7 @@
         questdb-postgres = 10005;
         ui = 10004;
         meilisearch = 10006;
+        postgres = 10009;
     };
     blog = {
         blog = 10008;
