@@ -86,6 +86,7 @@
                     (import ./modules/programs/alacritty/module.nix moduleParams)
                     (import ./modules/programs/steam.nix moduleParams)
                     (import ./modules/programs/office.nix moduleParams)
+                    (import ./modules/programs/kdenlive.nix moduleParams)
 
                     # CLI modules
                     (import ./modules/programs/cli-tools.nix moduleParams)
@@ -142,7 +143,6 @@
                     # Program modules
                     (import ./modules/programs/alacritty/module.nix moduleParams)
                     (import ./modules/programs/steam.nix moduleParams)
-                    (import ./modules/programs/kdenlive.nix moduleParams)
 
                     # CLI modules
                     (import ./modules/programs/cli-tools.nix moduleParams)
