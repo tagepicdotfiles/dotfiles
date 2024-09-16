@@ -174,6 +174,7 @@
                     (import ./overrides/nidoran/caddy.nix inputs)
                     (import ./overrides/nidoran/grafana.nix inputs)
                     (import ./overrides/nidoran/networking.nix inputs)
+                    (import ./overrides/nidoran/iam.nix inputs)
                     
                     # Base modules
                     (import ./modules/base.nix moduleParams)
